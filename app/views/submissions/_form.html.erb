@@ -11,57 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <div class="form-group">
+    <%= form.text_field :first_name, class: "form-control", placeholder: "First name", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :middle_name, class: "form-control", placeholder: "Middle name" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :last_name, class: "form-control", placeholder: "Last name", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.number_field :age, class: "form-control", placeholder: "Age", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :candidate_class, class: "form-control", placeholder: "Class", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :school, class: "form-control", placeholder: "School name", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :email, class: "form-control", placeholder: "Email", required: true %>
   </div>
 
   <div class="field">
-    <%= form.label :middle_name %>
-    <%= form.text_field :middle_name %>
+    <%= form.text_field :mobile_number_one, class: "form-control", placeholder: "Mobile number", required: true %>
   </div>
 
   <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+    <%= form.text_field :mobile_number_two, class: "form-control", placeholder: "Alternative mobile number" %>
   </div>
 
   <div class="field">
-    <%= form.label :age %>
-    <%= form.number_field :age %>
+    <%= form.text_area :article, class: "form-control article-field", placeholder: "Write your article", required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :class %>
-    <%= form.text_field :class %>
-  </div>
-
-  <div class="field">
-    <%= form.label :school %>
-    <%= form.text_field :school %>
-  </div>
-
-  <div class="field">
-    <%= form.label :article %>
-    <%= form.text_area :article %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :mobile_number_one %>
-    <%= form.text_field :mobile_number_one %>
-  </div>
-
-  <div class="field">
-    <%= form.label :mobile_number_two %>
-    <%= form.text_field :mobile_number_two %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
 <% end %>
