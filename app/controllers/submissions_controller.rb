@@ -26,14 +26,12 @@ class SubmissionsController < ApplicationController
   def create
     @submission = Submission.new(submission_params)
 
-    respond_to do |format|
-      if @submission.save
-        format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
-        format.json { render :show, status: :created, location: @submission }
-      else
-        format.html { render :new }
-        format.json { render json: @submission.errors, status: :unprocessable_entity }
-      end
+    if @submission.save
+      redirect_to root_path
+      flash[:success] = "Article successfully submitted"
+    else
+      redirect_to root_path
+      flash[:danger] = @submission.errors.full_messages.first
     end
   end
 
@@ -69,6 +67,6 @@ class SubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:first_name, :middle_name, :last_name, :age, :class, :school, :article, :email, :mobile_number_one, :mobile_number_two)
+      params.require(:submission).permit(:first_name, :middle_name, :last_name, :age, :candidate_class, :school, :article, :email, :mobile_number_one, :mobile_number_two)
     end
 end

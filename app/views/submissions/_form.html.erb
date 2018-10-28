@@ -1,18 +1,6 @@
 <%= form_with(model: submission, local: true) do |form| %>
-  <% if submission.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
-
-      <ul>
-      <% submission.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="form-group">
-    <%= form.text_field :first_name, class: "form-control", placeholder: "First name", required: true %>
+    <%= form.text_field :first_name, class: "form-control", placeholder: "First name" %>
   </div>
 
   <div class="form-group">
@@ -20,36 +8,36 @@
   </div>
 
   <div class="form-group">
-    <%= form.text_field :last_name, class: "form-control", placeholder: "Last name", required: true %>
+    <%= form.text_field :last_name, class: "form-control", placeholder: "Last name"%>
   </div>
 
   <div class="form-group">
-    <%= form.number_field :age, class: "form-control", placeholder: "Age", required: true %>
+    <%= form.number_field :age, class: "form-control", placeholder: "Age" %>
   </div>
 
   <div class="form-group">
-    <%= form.text_field :candidate_class, class: "form-control", placeholder: "Class", required: true %>
+    <%= form.text_field :candidate_class, class: "form-control", placeholder: "Class" %>
   </div>
 
   <div class="form-group">
-    <%= form.text_field :school, class: "form-control", placeholder: "School name", required: true %>
+    <%= form.text_field :school, class: "form-control", placeholder: "School name" %>
   </div>
 
   <div class="form-group">
-    <%= form.text_field :email, class: "form-control", placeholder: "Email", required: true %>
+    <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
   </div>
 
   <div class="field">
-    <%= form.text_field :mobile_number_one, class: "form-control", placeholder: "Mobile number", required: true %>
+    <%= form.text_field :mobile_number_one, class: "form-control", placeholder: "Mobile number, e.g: 07065437832" %>
   </div>
 
   <div class="field">
-    <%= form.text_field :mobile_number_two, class: "form-control", placeholder: "Alternative mobile number" %>
+    <%= form.text_field :mobile_number_two, class: "form-control", placeholder: "Alternative mobile number, e.g: 07065437832" %>
   </div>
 
   <div class="field">
-    <%= form.text_area :article, class: "form-control article-field", placeholder: "Write your article", required: true %>
+    <%= form.text_area :article, class: "form-control article-field", placeholder: "Write your article" %>
   </div>
 
-  <button type="submit" class="btn btn-success">Submit</button>
+  <button type="submit" class="btn btn-outline-success">Submit</button>
 <% end %>

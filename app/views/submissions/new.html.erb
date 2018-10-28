@@ -1,5 +1,11 @@
 <div class="new-submission">
   <h3>New Article</h3>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>">
+      <button class="close" data-dismiss="alert">×</button>
+      <%= value %>
+    </div>
+  <% end %>
 
   <%= render 'form', submission: @submission %>
 
