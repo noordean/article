@@ -11,6 +11,7 @@ class CreateSubmissions < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :mobile_number_one
       t.string :mobile_number_two
+      t.integer :number_of_errors
 
       t.timestamps
     end
