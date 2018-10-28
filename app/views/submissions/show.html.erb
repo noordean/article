@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @submission.first_name %>
+</p>
+
+<p>
+  <strong>Middle name:</strong>
+  <%= @submission.middle_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @submission.last_name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @submission.age %>
+</p>
+
+<p>
+  <strong>Class:</strong>
+  <%= @submission.class %>
+</p>
+
+<p>
+  <strong>School:</strong>
+  <%= @submission.school %>
+</p>
+
+<p>
+  <strong>Article:</strong>
+  <%= @submission.article %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @submission.email %>
+</p>
+
+<p>
+  <strong>Mobile number one:</strong>
+  <%= @submission.mobile_number_one %>
+</p>
+
+<p>
+  <strong>Mobile number two:</strong>
+  <%= @submission.mobile_number_two %>
+</p>
+
+<%= link_to 'Edit', edit_submission_path(@submission) %> |
+<%= link_to 'Back', submissions_path %>
