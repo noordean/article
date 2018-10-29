@@ -24,14 +24,15 @@ class SubmissionsController < ApplicationController
   # POST /submissions
   # POST /submissions.json
   def create
-    @submission = Submission.new(submission_params)
+    submission = Submission.new(submission_params)
+    submission.number_of_errors = check_grammatical_errors(submission.article)["corrections"].count
 
-    if @submission.save
+    if submission.save
       redirect_to root_path
       flash[:success] = "Article successfully submitted"
     else
       redirect_to root_path
-      flash[:danger] = @submission.errors.full_messages.first
+      flash[:danger] = submission.errors.full_messages.first
     end
   end
 
@@ -63,6 +64,11 @@ class SubmissionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_submission
       @submission = Submission.find(params[:id])
+    end
+
+    def check_grammatical_errors(text)
+      parser = Gingerice::Parser.new
+      parser.parse text
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
