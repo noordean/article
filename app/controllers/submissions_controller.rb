@@ -30,6 +30,9 @@ class SubmissionsController < ApplicationController
     if submission.save
       redirect_to root_path
       flash[:success] = "Article successfully submitted"
+      if submission.number_of_errors.count.to_i == 0 && submission.age.to_i < 18
+        UserMailer.with(submission: submission).success_email.deliver_later
+      end
     else
       redirect_to root_path
       flash[:danger] = submission.errors.full_messages.first

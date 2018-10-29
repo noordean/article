@@ -9,8 +9,9 @@ class Submission < ApplicationRecord
   validate :filter_article_words
 
   def filter_article_words
-    if article.split.size < 10
-      errors.add(:base, "Article should contain more than 10 words")
+    article_size = article.split.size
+    if (article_size < 250) || (article_size > 500)
+      errors.add(:base, "Article should contain between 250-500 words")
     end
   end
 end
