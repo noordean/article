@@ -11,6 +11,7 @@ gem 'dotenv-rails'
 gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 gem 'gingerice'
+gem 'bootstrap-datepicker-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

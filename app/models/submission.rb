@@ -10,8 +10,17 @@ class Submission < ApplicationRecord
 
   def filter_article_words
     article_size = article.split.size
-    if (article_size < 250) || (article_size > 500)
+    if (article_size < 2) || (article_size > 15)
       errors.add(:base, "Article should contain between 250-500 words")
     end
+  end
+
+  def shortlisted?
+    number_of_errors == 0 && age >= 18
+  end
+
+  def age
+    # date_of_birth.strftime("%d/%m/%Y")
+    ((Time.zone.now - date_of_birth.to_time) / 1.year.seconds).floor
   end
 end

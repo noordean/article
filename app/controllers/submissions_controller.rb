@@ -30,9 +30,9 @@ class SubmissionsController < ApplicationController
     if submission.save
       redirect_to root_path
       flash[:success] = "Article successfully submitted"
-      if submission.number_of_errors.count.to_i == 0 && submission.age.to_i < 18
-        UserMailer.with(submission: submission).success_email.deliver_later
-      end
+      # if submission.number_of_errors.to_i == 0 && submission.age.to_i >= 18
+      #   UserMailer.with(submission: submission).success_email.deliver_later
+      # end
     else
       redirect_to root_path
       flash[:danger] = submission.errors.full_messages.first
@@ -76,6 +76,6 @@ class SubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:first_name, :middle_name, :last_name, :age, :candidate_class, :school, :article, :email, :mobile_number_one, :mobile_number_two)
+      params.require(:submission).permit(:first_name, :middle_name, :last_name, :date_of_birth, :candidate_class, :school, :article, :email, :mobile_number_one, :mobile_number_two)
     end
 end
