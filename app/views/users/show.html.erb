@@ -1,21 +1,43 @@
 <% provide(:title, "Admin Dashboard") %>
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
-
-<%= link_to 'Logout', logout_path %> |
-<%= link_to 'Back', users_path %>
+<div class="admin-dashboard">
+  <h3>Admin Dashboard</h3>
+  <div class="row">
+    <div class="col-md-6">
+    <select id="candidates-select">
+      <option value="1">All candidates</option>
+      <option value="0">Successful candidates</option>
+      <option value="-1">Unsucessful candidates</option>
+    </select>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-outline-dark btn-sm float-right send-msg-btn">Send messages</button>
+    </div>
+  </div>
+  <table class="table">
+    <thead class="thead-light" id="submissions-head">
+      <tr>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">School</th>
+        <th scope="col">DOB</th>
+        <th scope="col">Class</th>
+        <th scope="col">Phone number</th>
+        <th scope="col"># of errors</th>
+      </tr>
+    </thead>
+    <tbody id="submissions-body">
+    <% @submissions.each do |s| %>
+      <tr>
+        <td><%= s.first_name %></td>
+        <td><%= s.last_name %></td>
+        <td><%= s.school %></td>
+        <td><%= s.date_of_birth %></td>
+        <td><%= s.candidate_class %></td>
+        <td><%= s.mobile_number_one %></td>
+        <td><%= s.number_of_errors %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<%= link_to 'Logout', logout_path %>

@@ -13,6 +13,20 @@ class SubmissionsController < ApplicationController
   def show
   end
 
+  def get_submissions
+    puts params
+    submissions = Submission.all
+    if params[:category_id].to_i == 0
+      submissions = Submission.all.select { |s| s.shortlisted? }
+    end
+
+    if params[:category_id].to_i == -1
+      submissions = Submission.all.reject { |s| s.shortlisted? }
+    end
+
+    render :json => submissions
+  end
+
   # GET /submissions/new
   def new
     @submission = Submission.new
