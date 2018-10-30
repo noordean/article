@@ -10,8 +10,8 @@ class Submission < ApplicationRecord
 
   def filter_article_words
     article_size = article.split.size
-    if (article_size < 2) || (article_size > 15)
-      errors.add(:base, "Article should contain between 250-500 words")
+    if (article_size < 50) || (article_size > 100)
+      errors.add(:base, "Article should contain between 50-100 words, but you submitted #{article_size} words.")
     end
   end
 

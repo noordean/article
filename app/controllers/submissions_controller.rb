@@ -14,7 +14,6 @@ class SubmissionsController < ApplicationController
   end
 
   def get_submissions
-    puts params
     submissions = Submission.all
     if params[:category_id].to_i == 0
       submissions = Submission.all.select { |s| s.shortlisted? }
@@ -49,6 +48,7 @@ class SubmissionsController < ApplicationController
       #   UserMailer.with(submission: submission).success_email.deliver_later
       # end
     else
+      cookies[:written_article] = { :value => submission.article, :expires => 2.seconds.from_now }
       redirect_to root_path
       flash[:danger] = submission.errors.full_messages.first
     end

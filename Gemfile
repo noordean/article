@@ -12,6 +12,7 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 gem 'gingerice'
 gem 'bcrypt', '~> 3.1.7'
+gem "jquery-validation-rails"
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

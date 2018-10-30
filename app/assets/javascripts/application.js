@@ -17,6 +17,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+
 $(document).ready(function() {
   $("#candidates-select").change(function(event) {
     var category_id = event.target.value;
@@ -24,10 +25,14 @@ $(document).ready(function() {
       url: "/submissions/category/" + category_id,
       type: "GET"
     }).done(function(result) {
-      console.log(result)
       $("#submissions-body").html(renderSubmissionsBody(result));
     });
   });
+
+  // $("#submit-form").submit(function(e) {
+  //   event.preventDefault()
+  //   alert("hii")
+  // })
 
   function renderSubmissionsBody(submissions) {
     var htmlStr = "";
