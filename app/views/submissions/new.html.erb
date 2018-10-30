@@ -1,3 +1,5 @@
+<% provide(:title, "Home") %>
+
 <div class="new-submission">
   <h3>New Article</h3>
   <% flash.each do |key, value| %>
@@ -9,5 +11,5 @@
 
   <%= render 'form', submission: @submission %>
 
-  <%#<%= link_to 'Back', submissions_path %>
+  <%= link_to 'Admin Login', login_path %>
 </div>

@@ -10,23 +10,13 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, class: "form-control", placeholder: "Enter your email" %>
   </div>
 
   <div class="field">
-    <%= form.label :password %>
-    <%= form.text_field :password %>
+    <%= form.password_field :password, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :role %>
-    <%= form.text_field :role %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <button type="submit" class="btn btn-outline-primary">Login</button>
 <% end %>

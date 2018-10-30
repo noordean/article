@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_admin, only: [:new]
 
   # GET /submissions
   # GET /submissions.json
@@ -72,6 +73,12 @@ class SubmissionsController < ApplicationController
     def check_grammatical_errors(text)
       parser = Gingerice::Parser.new
       parser.parse text
+    end
+
+    def redirect_admin
+      if is_admin?
+        redirect_to user_path(current_user)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
