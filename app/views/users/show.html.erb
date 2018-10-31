@@ -1,4 +1,10 @@
 <% provide(:title, "Admin Dashboard") %>
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+    <button class="close" data-dismiss="alert">×</button>
+    <%= value %>
+  </div>
+<% end %>
 <div class="admin-dashboard">
   <h3>Admin Dashboard</h3>
   <div class="row">
@@ -10,7 +16,7 @@
     </select>
     </div>
     <div class="col-md-6">
-      <button class="btn btn-outline-dark btn-sm float-right send-msg-btn">Send messages</button>
+      <a href="#" data-toggle="modal" data-target="#order" class="btn btn-outline-dark btn-sm float-right send-msg-btn">Send message</a>
     </div>
   </div>
   <table class="table">
@@ -33,11 +39,12 @@
         <td><%= s.school %></td>
         <td><%= s.date_of_birth %></td>
         <td><%= s.candidate_class %></td>
-        <td><%= s.mobile_number_one %></td>
+        <td><%= s.phone_number %></td>
         <td><%= s.number_of_errors %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
 </div>
+
 <%= link_to 'Logout', logout_path %>

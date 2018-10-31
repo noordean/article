@@ -21,7 +21,7 @@ class SubmissionsTest < ApplicationSystemTestCase
     fill_in "First Name", with: @submission.first_name
     fill_in "Last Name", with: @submission.last_name
     fill_in "Middle Name", with: @submission.middle_name
-    fill_in "Mobile Number One", with: @submission.mobile_number_one
+    fill_in "Mobile Number One", with: @submission.phone_number
     fill_in "Mobile Number Two", with: @submission.mobile_number_two
     fill_in "School", with: @submission.school
     click_on "Create Submission"

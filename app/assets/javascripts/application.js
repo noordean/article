@@ -46,7 +46,7 @@ $(document).ready(function() {
                   "<td>" + submissions[i].school + "</td>" +
                   "<td>" + submissions[i].date_of_birth + "</td>" +
                   "<td>" + submissions[i].candidate_class + "</td>" +
-                  "<td>" + submissions[i].mobile_number_one + "</td>" +
+                  "<td>" + submissions[i].phone_number + "</td>" +
                   "<td>" + submissions[i].number_of_errors + "</td></tr>"
     }
 

@@ -39,14 +39,10 @@ class SubmissionsController < ApplicationController
   # POST /submissions.json
   def create
     submission = Submission.new(submission_params)
-    submission.number_of_errors = check_grammatical_errors(submission.article)["corrections"].count
 
     if submission.save
       redirect_to root_path
       flash[:success] = "Article successfully submitted"
-      # if submission.number_of_errors.to_i == 0 && submission.age.to_i >= 18
-      #   UserMailer.with(submission: submission).success_email.deliver_later
-      # end
     else
       cookies[:written_article] = { :value => submission.article, :expires => 2.seconds.from_now }
       redirect_to root_path
@@ -97,6 +93,6 @@ class SubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:first_name, :middle_name, :last_name, :date_of_birth, :candidate_class, :school, :article, :email, :mobile_number_one, :mobile_number_two)
+      params.require(:submission).permit(:first_name, :middle_name, :last_name, :date_of_birth, :candidate_class, :school, :article, :email, :phone_number)
     end
 end

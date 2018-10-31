@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#login'
   get '/logout',  to: 'sessions#logout'
   get "submissions/category/:category_id", to: "submissions#get_submissions"
+  post "/send_message", to: "users#send_message"
 end

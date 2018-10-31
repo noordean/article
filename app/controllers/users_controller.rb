@@ -23,6 +23,20 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def send_message
+    client = Busibe::Client.new({public_key: ENV['PUBLIC_KEY'], access_token: ENV['ACCESS_TOKEN']})
+    # Submission.all.select { |s| s.shortlisted? }.each do |s|
+    #   payload = {
+    #     to: s.phone_number,
+    #     from: "DAGOMO",
+    #     message: params[:message]
+    #   }
+    #   client.send_sms payload
+    # end
+    flash[:success] = "Message successfully sent"
+    redirect_to root_path
+  end
+
   # POST /users
   # POST /users.json
   def create

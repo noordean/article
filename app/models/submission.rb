@@ -4,14 +4,16 @@ class Submission < ApplicationRecord
   validates :candidate_class, presence: true
   validates :school, presence: true
   validates :email, uniqueness: true, format: { with: /\A[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/, message: "must be valid"}
-  validates :mobile_number_one, uniqueness: true, format: { with: /\A\d{11}\z/, message: 'must be valid'}
+  validates :phone_number, uniqueness: true, format: { with: /\A\d{11}\z/, message: 'must be valid'}
   validates :article, presence: true
   validate :filter_article_words
 
+  after_commit :update_number_of_errors, on: :create
+
   def filter_article_words
     article_size = article.split.size
-    if (article_size < 50) || (article_size > 100)
-      errors.add(:base, "Article should contain between 50-100 words, but you submitted #{article_size} words.")
+    if (article_size < 250) || (article_size > 500)
+      errors.add(:base, "Article should contain between 250-500 words, but you submitted #{article_size} words.")
     end
   end
 
@@ -20,7 +22,21 @@ class Submission < ApplicationRecord
   end
 
   def age
-    # date_of_birth.strftime("%d/%m/%Y")
     ((Time.zone.now - date_of_birth.to_time) / 1.year.seconds).floor
+  end
+
+  def update_number_of_errors
+    first_part_of_article = article.truncate(500, separator: '.')
+    no_of_errors = check_grammatical_errors(first_part_of_article)["corrections"].count
+    no_of_errors += check_grammatical_errors(article[first_part_of_article.size..article.size].truncate(500, separator: '.'))["corrections"].count
+
+    self.update(number_of_errors: no_of_errors)
+  end
+
+  private
+
+  def check_grammatical_errors(text)
+    parser = Gingerice::Parser.new
+    parser.parse text
   end
 end
