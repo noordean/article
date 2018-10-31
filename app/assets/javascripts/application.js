@@ -25,14 +25,10 @@ $(document).ready(function() {
       url: "/submissions/category/" + category_id,
       type: "GET"
     }).done(function(result) {
+      $("#number-of-candidates").html(result.length + " candidates");
       $("#submissions-body").html(renderSubmissionsBody(result));
     });
   });
-
-  // $("#submit-form").submit(function(e) {
-  //   event.preventDefault()
-  //   alert("hii")
-  // })
 
   function renderSubmissionsBody(submissions) {
     var htmlStr = "";

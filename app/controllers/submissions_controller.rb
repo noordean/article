@@ -39,12 +39,14 @@ class SubmissionsController < ApplicationController
   # POST /submissions.json
   def create
     submission = Submission.new(submission_params)
-
+    puts submission_params
     if submission.save
       redirect_to root_path
       flash[:success] = "Article successfully submitted"
     else
-      cookies[:written_article] = { :value => submission.article, :expires => 2.seconds.from_now }
+      submission_params.each do |name, value|
+        cookies[name] = { :value => value, :expires => 2.seconds.from_now }
+      end
       redirect_to root_path
       flash[:danger] = submission.errors.full_messages.first
     end

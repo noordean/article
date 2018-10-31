@@ -1,3 +1,13 @@
-<div class="company-name">
-    <%= link_to 'DAGOMO Article Submission', root_path %>
+<div class="company-name row">
+  <div class="col-sm-6">
+    <span><img class="img-logo" src="<%= asset_path('image.png') %>" alt="dagomo" /></span>
+    <%= link_to 'DAOPECA article', root_path, class: "dagomo-title" %>
+  </div>
+  <div class="col-sm-6">
+    <% if params[:controller] == "users" && params[:action] == "show" %>
+      <%= link_to 'Logout', logout_path, class: "float-right admin-login" %>
+    <% else %>
+      <%= link_to 'Admin Login', login_path, class: "float-right admin-login" %>
+    <% end %>
+  </div>
 </div>

@@ -4,7 +4,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="first">First Name</label>
-          <%= form.text_field :first_name, class: "form-control", required: true %>
+          <%= form.text_field :first_name, class: "form-control", required: true, value: cookies[:first_name] %>
         </div>
       </div>
       <!--  col-md-6   -->
@@ -12,7 +12,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="last">Middle Name</label>
-          <%= form.text_field :middle_name, class: "form-control" %>
+          <%= form.text_field :middle_name, class: "form-control", value: cookies[:middle_name] %>
         </div>
       </div>
       <!--  col-md-6   -->
@@ -23,7 +23,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="company">Last Name</label>
-          <%= form.text_field :last_name, class: "form-control", required: true %>
+          <%= form.text_field :last_name, class: "form-control", required: true, value: cookies[:last_name] %>
         </div>
 
 
@@ -34,7 +34,7 @@
 
         <div class="form-group">
           <label for="phone">Date of Birth</label>
-          <%= form.date_field :date_of_birth, class: 'form-control', required: true %>
+          <%= form.date_field :date_of_birth, class: 'form-control', required: true, value: cookies[:date_of_birth] %>
         </div>
       </div>
       <!--  col-md-6   -->
@@ -47,15 +47,15 @@
 
         <div class="form-group">
           <label for="email">Class</label>
-          <%= form.text_field :candidate_class, class: "form-control", required: true %>
+          <%= form.text_field :candidate_class, class: "form-control", required: true, value: cookies[:candidate_class] %>
         </div>
       </div>
       <!--  col-md-6   -->
 
       <div class="col-md-6">
         <div class="form-group">
-          <label for="url">School <small>Please include the full name</small></label>
-          <%= form.text_field :school, class: "form-control", required: true %>
+          <label for="url">School <small>Please include the full name and location</small></label>
+          <%= form.text_field :school, class: "form-control", required: true, value: cookies[:school] %>
         </div>
 
       </div>
@@ -68,7 +68,7 @@
 
         <div class="form-group">
           <label for="email">Email</label>
-          <%= form.email_field :email, class: "form-control", required: true %>
+          <%= form.email_field :email, class: "form-control", required: true, value: cookies[:email] %>
         </div>
       </div>
       <!--  col-md-6   -->
@@ -76,7 +76,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="url">Phone Number</label>
-          <%= form.text_field :phone_number, class: "form-control", placeholder: "e.g: 07065437832", required: true %>
+          <%= form.text_field :phone_number, class: "form-control", placeholder: "e.g: 07065437832", required: true, value: cookies[:phone_number] %>
         </div>
 
       </div>
@@ -84,9 +84,9 @@
     </div>
 
     <div class="row">
-        <%= form.text_area :article, class: "form-control article-field", required: true, value: cookies[:written_article] %>
+        <%= form.text_area :article, class: "form-control article-field", required: true, value: cookies[:article] %>
     </div>
 
-    <button type="submit" class="btn btn-outline-primary submit-btn">Submit</button>
+    <button type="submit" class="btn btn-outline-dark submit-btn">Submit</button>
 <% end %>
 </div>

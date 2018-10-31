@@ -14,11 +14,13 @@
       <option value="0">Successful candidates</option>
       <option value="-1">Unsucessful candidates</option>
     </select>
+    <span id="number-of-candidates"><%= pluralize(@submissions.size,"candidate") %></span>
     </div>
     <div class="col-md-6">
       <a href="#" data-toggle="modal" data-target="#order" class="btn btn-outline-dark btn-sm float-right send-msg-btn">Send message</a>
     </div>
   </div>
+  <div class="table-container">
   <table class="table">
     <thead class="thead-light" id="submissions-head">
       <tr>
@@ -45,6 +47,5 @@
     <% end %>
     </tbody>
   </table>
+  </div>
 </div>
-
-<%= link_to 'Logout', logout_path %>
