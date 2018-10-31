@@ -28,7 +28,7 @@ class Submission < ApplicationRecord
   def update_number_of_errors
     first_part_of_article = article.truncate(500, separator: '.')
     no_of_errors = check_grammatical_errors(first_part_of_article)["corrections"].count
-    no_of_errors += check_grammatical_errors(article[first_part_of_article.size..article.size].truncate(500, separator: '.'))["corrections"].count
+    no_of_errors += check_grammatical_errors(article[(first_part_of_article.size - 1)..article.size].truncate(500, separator: '.'))["corrections"].count
 
     self.update(number_of_errors: no_of_errors)
   end

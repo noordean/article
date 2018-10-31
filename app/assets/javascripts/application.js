@@ -18,7 +18,7 @@
 //= require popper
 //= require bootstrap
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   $("#candidates-select").change(function(event) {
     var category_id = event.target.value;
     $.ajax({

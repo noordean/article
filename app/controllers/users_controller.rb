@@ -25,16 +25,22 @@ class UsersController < ApplicationController
 
   def send_message
     client = Busibe::Client.new({public_key: ENV['PUBLIC_KEY'], access_token: ENV['ACCESS_TOKEN']})
-    Submission.all.select { |s| s.shortlisted? }.each do |s|
-      payload = {
-        to: s.phone_number,
-        from: "DAGOMO",
-        message: params[:message]
-      }
-      client.send_sms payload
+    successful_candidates = Submission.all.select { |s| s.shortlisted? }
+    if (successful_candidates.size == 0)
+      flash[:danger] = "Message not sent. No successful candidates detected."
+      redirect_to root_path
+    else
+      successful_candidates.each do |s|
+        payload = {
+          to: s.phone_number,
+          from: "DAGOMO",
+          message: params[:message]
+        }
+        client.send_sms payload
+      end
+      flash[:success] = "Message successfully sent"
+      redirect_to root_path
     end
-    flash[:success] = "Message successfully sent"
-    redirect_to root_path
   end
 
   # POST /users
