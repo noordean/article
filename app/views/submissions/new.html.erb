@@ -1,13 +1,29 @@
 <% provide(:title, "Home") %>
 
-<div class="new-submission">
-  <h5>Welcome, fill this form to submit your article</h5>
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>">
-      <button class="close" data-dismiss="alert">×</button>
-      <%= value %>
-    </div>
-  <% end %>
 
-  <%= render 'form', submission: @submission %>
+<div class="rows">
+  <div class=" register-left">
+    <div>
+      <img class="img-logo" src="<%= asset_path('image.png') %>" alt="dagomo" />
+      <h3>Welcome</h3>
+      <p>Kindly fill this form to submit your article</p>
+    </div>
+    <% if params[:controller] == "users" && params[:action] == "show" %>
+      <%= link_to "Logout", logout_path, class: "admin-login" %>
+    <% else %>
+      <span>Admin? <%= link_to 'Login here', login_path, class: "admin-login"%></span>
+    <% end %>
+  </div>
+  <div class=" register-right">
+    <% flash.each do |key, value| %>
+     <div class="alert alert-<%= key %>">
+       <button class="close" data-dismiss="alert">×</button>
+       <%= value %>
+     </div>
+    <% end %>
+    <div>
+      <h4>DAOPECA Article</h4>
+      <%= render 'form', submission: @submission %>
+    </div>
+  </div>
 </div>

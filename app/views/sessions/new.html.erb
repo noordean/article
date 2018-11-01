@@ -1,7 +1,7 @@
 <% provide(:title, "Log in") %>
 
 <div class="user-login">
-  <h1>Login</h1>
+  <h3>Login</h3><%= link_to 'Home', root_path %>
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>">
       <button class="close" data-dismiss="alert">×</button>
@@ -17,6 +17,6 @@
       <%= f.password_field :password, class: "form-control" %>
     </div>
 
-    <button type="submit" class="btn btn-outline-dark">Login</button>
+    <button type="submit" class="btn">Login</button>
   <% end %>
 </div>

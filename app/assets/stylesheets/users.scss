@@ -4,8 +4,44 @@
 
 .user-login {
   text-align: center;
-  width: 50%;
-  margin: 0 auto;
+  width: 30%;
+  margin: 16% auto;
+  height: 40%;
+  background-color: #f8f9fa;
+  padding: 2% 3% 4%;
+  box-shadow: 0 4px 9px 0 rgba(4, 4, 4, 0.529);
+  border-radius: 4px;
+
+  h3 {
+    color: #646465;
+    display: inline;
+  }
+
+  a {
+    display: flex;
+    justify-content: flex-end;
+
+    &:hover {
+      text-decoration: none;
+      background: none;
+    }
+  }
+
+  .btn {
+    background: #5baf31;
+    color: #fff;
+    border-radius: 20px;
+    padding: 7px 40px;
+    margin-top: 15px;
+
+    &:hover {
+      color: #5baf31;
+      background: none;
+      border: 1px solid #5baf31;
+      transition: ease all 0.5s;
+    }
+  }
+
 }
 
 .admin-dashboard {
