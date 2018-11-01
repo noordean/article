@@ -9,14 +9,15 @@
   <h3>Admin Dashboard</h3>
   <div class="row">
     <div class="col-md-6">
-    <select id="candidates-select">
-      <option value="1">All candidates</option>
-      <option value="0">Successful candidates</option>
-      <option value="-1">Unsucessful candidates</option>
-    </select>
-    <span id="number-of-candidates"><%= pluralize(@submissions.size,"candidate") %></span>
+      <select id="candidates-select">
+        <option value="1">All candidates</option>
+        <option value="0">Successful candidates</option>
+        <option value="-1">Unsucessful candidates</option>
+      </select>
+      <span id="number-of-candidates"><%= pluralize(@submissions.size,"candidate") %></span>
     </div>
     <div class="col-md-6">
+      <%= link_to 'Logout', logout_path, class: "float-right admin-login" %>
       <a href="#" data-toggle="modal" data-target="#order" class="btn btn-outline-dark btn-sm float-right send-msg-btn">Send message</a>
     </div>
   </div>

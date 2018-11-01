@@ -1,5 +1,5 @@
 <div class="form-container">
-  <%= form_with(model: submission, local: true, html: {class:  "submit-form"}) do |form| %>
+  <%= form_with(model: submission, remote: true, html: {class:  "submit-form"}) do |form| %>
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
@@ -17,7 +17,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <%= form.text_field :middle_name, class: "form-control", required: true, value: cookies[:middle_name], placeholder: "Middle Name:" %>
+          <%= form.text_field :middle_name, class: "form-control", value: cookies[:middle_name], placeholder: "Middle Name:" %>
         </div>
         <div class="form-group">
           <%= form.date_field :date_of_birth, class: 'form-control', required: true, value: cookies[:date_of_birth], placeholder: "Date of Birth:" %>
