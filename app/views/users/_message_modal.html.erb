@@ -4,6 +4,13 @@
         <%= form_with(url: "/send_message", local: true) do %>
         <div class="modal-body">
             <div class="form-group">
+              <select name="broadcast_method" class="form-control" required="true">
+                <option value="">--Broadcast Method--</option>
+                <option value="email">Email</option>
+                <option value="sms">SMS</option>
+            </select>
+            </div>
+            <div class="form-group">
               <textarea name="message" type="text" class="form-control address-input" placeholder="Write message" rows="5" required></textarea>
             </div>
             <div class="modal-footer">

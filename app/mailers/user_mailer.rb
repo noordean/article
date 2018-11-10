@@ -1,6 +1,7 @@
 class UserMailer < ApplicationMailer
   def success_email
     @submission = params[:submission]
-    mail(to: @submission.email, subject: "Congrats!")
+    @message = params[:message]
+    mail(to: @submission.email, subject: "Dagomo Article")
   end
 end

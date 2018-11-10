@@ -30,14 +30,12 @@ class UsersController < ApplicationController
       flash[:danger] = "Message not sent. No successful candidates detected."
       redirect_to root_path
     else
-      successful_candidates.each do |s|
-        payload = {
-          to: s.phone_number,
-          from: "DAGOMO",
-          message: params[:message]
-        }
-        client.send_sms payload
+      if params[:broadcast_method] == "sms"
+        send_sms(successful_candidates, params[:message])
+      else
+        send_mail(successful_candidates, params[:message])
       end
+
       flash[:success] = "Message successfully sent"
       redirect_to root_path
     end
@@ -84,19 +82,36 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    def authorize_admin
-      unless is_admin?
-        redirect_to root_path
-      end
+  def send_sms(candidates, message)
+    candidates.each do |s|
+      payload = {
+        to: s.phone_number,
+        from: "DAGOMO",
+        message: message
+      }
+      client.send_sms payload
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:email, :password, :role)
+  def send_mail(candidates, message)
+    candidates.each do |s|
+      UserMailer.with(submission: s, message: message).success_email.deliver_later
     end
+  end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def authorize_admin
+    unless is_admin?
+      redirect_to root_path
+    end
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:email, :password, :role)
+  end
 end
