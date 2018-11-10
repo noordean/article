@@ -14,6 +14,7 @@ gem 'gingerice'
 gem 'bcrypt', '~> 3.1.7'
 gem "jquery-validation-rails"
 gem 'busibe'
+gem 'aws-sdk-s3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

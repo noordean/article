@@ -39,7 +39,6 @@ class SubmissionsController < ApplicationController
   # POST /submissions.json
   def create
     submission = Submission.new(submission_params)
-    puts submission_params
     if submission.save
       redirect_to root_path
       flash[:success] = "Article successfully submitted"
@@ -95,6 +94,6 @@ class SubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:first_name, :middle_name, :last_name, :date_of_birth, :candidate_class, :school, :article, :email, :phone_number)
+      params.require(:submission).permit(:first_name, :middle_name, :last_name, :date_of_birth, :candidate_class, :school, :article, :email, :phone_number, :image)
     end
 end

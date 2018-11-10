@@ -48,4 +48,31 @@ $(document).on('turbolinks:load', function() {
 
     return htmlStr;
   }
+
+  $('.photo_upload').on('change', function(e) {
+    readURL(this);
+  });
+
+  function readURL(input) {
+    var reader;
+    if (input.files && input.files[0]) {
+      reader = new FileReader();
+    }
+    reader.onload = function(e) {
+      if (Math.floor(input.files[0].size/1000) > 500) {
+        var errorMsg = document.getElementById("passport-error-msg");
+        $(".passport-error-msg").html("Your passport cannot be greater than 500kb");
+        return;
+      }
+      var $swap;
+      $(".passport-error-msg").html("");
+      $('.image_preview').attr('src', e.target.result).removeClass('hidden');
+      $swap = $('.swap');
+      if ($swap) {
+        $swap.removeClass('hidden');
+      }
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  };
 });

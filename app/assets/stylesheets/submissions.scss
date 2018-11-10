@@ -96,6 +96,21 @@
         outline: none;
       }
     }
+
+    .image_preview {
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+    }
+
+    .photo_upload {
+      display: none;
+    }
+
+    .passport-error-msg {
+      color: red;
+      font-size: 12px;
+    }
   }
 }
 

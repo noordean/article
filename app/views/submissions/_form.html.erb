@@ -1,5 +1,14 @@
 <div class="form-container">
-  <%= form_with(model: submission, remote: true, html: {class:  "submit-form"}) do |form| %>
+  <%= form_with(model: submission, local: true, html: {class:  "submit-form"}) do |form| %>
+
+    <div class="file-upload">
+      <label for="photo-input">
+          <%= image_tag 'passport.png', class: 'hidden image_preview' %>
+      </label>
+      <%= form.file_field :image, class: "photo_upload", id: "photo-input" %>
+    </div>
+    <div class="passport-error-msg"></div>
+
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
