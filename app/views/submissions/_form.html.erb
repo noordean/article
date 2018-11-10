@@ -17,13 +17,16 @@
         <div class="form-group">
           <%= form.text_field :last_name, class: "form-control", required: true, value: cookies[:last_name], placeholder: "Last Name:" %>
         </div>
+
         <div class="form-group">
-          <%= form.text_field :candidate_class, class: "form-control", required: true, value: cookies[:candidate_class], placeholder: "Class:" %>
+          <%= form.select :candidate_class, [["JSS 1", "jss_1"], ["JSS 2", "jss_2"], ["JSS 3", "jss_3"], ["SSS 1", "sss_1"], ["SSS 2", "sss_2"], ["SSS 3", "sss_3"]], { prompt: "Class" }, { class: "form-control", required: true } %>
         </div>
+
         <div class="form-group">
           <%= form.email_field :email, class: "form-control", required: true, value: cookies[:email], placeholder: "Email Address:" %>
         </div>
       </div>
+
       <div class="col-md-6">
         <div class="form-group">
           <%= form.text_field :middle_name, class: "form-control", value: cookies[:middle_name], placeholder: "Middle Name:" %>

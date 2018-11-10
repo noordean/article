@@ -41,7 +41,7 @@
         <td><%= s.last_name %></td>
         <td><%= s.school %></td>
         <td><%= s.date_of_birth %></td>
-        <td><%= s.candidate_class %></td>
+        <td><%= s.candidate_class.split("_").join(" ").upcase %></td>
         <td><%= s.phone_number %></td>
         <td><%= s.number_of_errors %></td>
       </tr>
