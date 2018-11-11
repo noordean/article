@@ -1,8 +1,19 @@
 <div class="modal fade" id="order" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Send message to successful candidates</h5>
+      </div>
         <%= form_with(url: "/send_message", local: true) do %>
         <div class="modal-body">
+            <div class="form-group">
+              <select name="difficulty_level" class="form-control" required="true">
+                <option value="">--Select Difficulty Level--</option>
+                <option value="hard">Hard</option>
+                <option value="medium">Medium</option>
+                <option value="easy">Easy</option>
+              </select>
+            </div>
             <div class="form-group">
               <select name="broadcast_method" class="form-control" required="true">
                 <option value="">--Broadcast Method--</option>

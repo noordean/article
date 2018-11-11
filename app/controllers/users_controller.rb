@@ -11,8 +11,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    puts "=========Yea-======"
-    puts params
     @submissions = Submission.all
   end
 
@@ -26,7 +24,8 @@ class UsersController < ApplicationController
   end
 
   def send_message
-    successful_candidates = Submission.all.select { |s| s.shortlisted? }
+    number_of_errors = DifficultyLevel.find_by(name: params[:difficulty_level])&.number_of_errors || 0
+    successful_candidates = Submission.all.select { |s| s.shortlisted?(number_of_errors) }
     if (successful_candidates.size == 0)
       flash[:danger] = "Message not sent. No successful candidates detected."
       redirect_to root_path
@@ -44,11 +43,11 @@ class UsersController < ApplicationController
 
   def select_candidates
     @submissions = Submission.all
-    number_of_errors = DifficultyLevel.find_by(name: "hard").number_of_errors || 0
+    number_of_errors = DifficultyLevel.find_by(name: "hard")&.number_of_errors || 0
     if params[:difficulty_level]&.to_i == 0
-      number_of_errors = DifficultyLevel.find_by(name: "medium").number_of_errors || 2
+      number_of_errors = DifficultyLevel.find_by(name: "medium")&.number_of_errors || 2
     elsif params[:difficulty_level]&.to_i == -1
-      number_of_errors = DifficultyLevel.find_by(name: "easy").number_of_errors || 5
+      number_of_errors = DifficultyLevel.find_by(name: "easy")&.number_of_errors || 5
     end
 
     if params[:candidate_type].to_i == 0

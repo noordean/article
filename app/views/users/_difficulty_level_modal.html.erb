@@ -4,7 +4,7 @@
         <%= form_with(url: "/set_difficulty_level", local: true) do %>
         <div class="modal-body">
             <div class="form-group">
-              <label>Hard</label>
+              <label><b>Hard</b> <%= "(Current Value: #{DifficultyLevel.find_by(name: 'hard')&.number_of_errors || 0})" %></label>
               <select name="hard" class="form-control" required="true">
                 <option value="">--Maximum number of grammatical errors--</option>
                 <option value="0">0</option>
@@ -16,7 +16,7 @@
               </select>
             </div>
             <div class="form-group">
-              <label>Medium</label>
+              <label><b>Medium</b> <%= "(Current Value: #{DifficultyLevel.find_by(name: 'medium')&.number_of_errors || 2})" %></label>
               <select name="medium" class="form-control" required="true">
                 <option value="">--Maximum number of grammatical errors--</option>
                 <option value="0">0</option>
@@ -33,7 +33,7 @@
               </select>
             </div>
             <div class="form-group">
-              <label>Easy</label>
+              <label><b>Easy</b> <%= "(Current Value: #{DifficultyLevel.find_by(name: 'easy')&.number_of_errors || 5})" %></label>
               <select name="easy" class="form-control" required="true">
                 <option value="">--Maximum number of grammatical errors--</option>
                 <option value="0">0</option>
