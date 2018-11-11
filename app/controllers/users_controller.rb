@@ -24,16 +24,15 @@ class UsersController < ApplicationController
   end
 
   def send_message
-    client = Busibe::Client.new({public_key: ENV['PUBLIC_KEY'], access_token: ENV['ACCESS_TOKEN']})
     successful_candidates = Submission.all.select { |s| s.shortlisted? }
     if (successful_candidates.size == 0)
       flash[:danger] = "Message not sent. No successful candidates detected."
       redirect_to root_path
     else
       if params[:broadcast_method] == "sms"
-        send_sms(successful_candidates, params[:message])
+        SendSmsJob.perform_later(successful_candidates, params[:message])
       else
-        send_mail(successful_candidates, params[:message])
+        SendEmailJob.perform_later(successful_candidates, params[:message])
       end
 
       flash[:success] = "Message successfully sent"
@@ -83,22 +82,6 @@ class UsersController < ApplicationController
 
   private
 
-  def send_sms(candidates, message)
-    candidates.each do |s|
-      payload = {
-        to: s.phone_number,
-        from: "DAGOMO",
-        message: message
-      }
-      client.send_sms payload
-    end
-  end
-
-  def send_mail(candidates, message)
-    candidates.each do |s|
-      UserMailer.with(submission: s, message: message).success_email.deliver_later
-    end
-  end
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
