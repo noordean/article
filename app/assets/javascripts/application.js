@@ -20,34 +20,41 @@
 
 $(document).on('turbolinks:load', function() {
   $("#candidates-select").change(function(event) {
-    var category_id = event.target.value;
-    $.ajax({
-      url: "/submissions/category/" + category_id,
-      type: "GET"
-    }).done(function(result) {
-      $("#number-of-candidates").html(result.length + " candidates");
-      $("#submissions-body").html(renderSubmissionsBody(result));
-    });
+    // var category_id = event.target.value;
+    // $.ajax({
+    //   url: "/submissions/category/" + category_id,
+    //   type: "GET"
+    // }).done(function(result) {
+    //   $("#number-of-candidates").html(result.length + " candidates");
+    //   $("#submissions-body").html(renderSubmissionsBody(result));
+    // });
+    if (event.target.value == 1) {
+      $("#difficulty-level").addClass("difficulty-level");
+    } else {
+      $("#difficulty-level").removeClass("difficulty-level");
+    }
   });
 
-  function renderSubmissionsBody(submissions) {
-    var htmlStr = "";
-    if (submissions.length === 0) {
-      return "<div>No Results</div>";
-    }
+  // function renderSubmissionsBody(submissions) {
+  //   var htmlStr = "";
+  //   if (submissions.length === 0) {
+  //     return "<div>No Results</div>";
+  //   }
 
-    for (var i = 0; i < submissions.length; i++) {
-      htmlStr += "<tr><td>" + submissions[i].first_name + "</td>" +
-                  "<td>" + submissions[i].last_name + "</td>" +
-                  "<td>" + submissions[i].school + "</td>" +
-                  "<td>" + submissions[i].date_of_birth + "</td>" +
-                  "<td>" + (submissions[i].candidate_class).split("_").join(" ").toUpperCase() + "</td>" +
-                  "<td>" + submissions[i].phone_number + "</td>" +
-                  "<td>" + submissions[i].number_of_errors + "</td></tr>"
-    }
+  //   for (var i = 0; i < submissions.length; i++) {
+  //     htmlStr += "<tr><td>" + submissions[i].first_name + "</td>" +
+  //                 "<td>" + submissions[i].last_name + "</td>" +
+  //                 "<td>" + submissions[i].school + "</td>" +
+  //                 "<td>" + submissions[i].date_of_birth + "</td>" +
+  //                 "<td>" + (submissions[i].candidate_class).split("_").join(" ").toUpperCase() + "</td>" +
+  //                 "<td>" + submissions[i].phone_number + "</td>" +
+  //                 "<td>" + submissions[i].number_of_errors + "</td></tr>"
+  //   }
 
-    return htmlStr;
-  }
+  //   return htmlStr;
+  // }
+
+
 
   $('.photo_upload').on('change', function(e) {
     readURL(this);

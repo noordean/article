@@ -28,8 +28,8 @@ class Submission < ApplicationRecord
     end
   end
 
-  def shortlisted?
-    number_of_errors == 0 && age >= 18
+  def shortlisted?(no_of_errors)
+    (number_of_errors <= no_of_errors) && (age >= 18) && (candidate_class == "jss_3")
   end
 
   def age

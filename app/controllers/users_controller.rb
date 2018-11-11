@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    puts "=========Yea-======"
+    puts params
     @submissions = Submission.all
   end
 
@@ -40,6 +42,27 @@ class UsersController < ApplicationController
     end
   end
 
+  def select_candidates
+    puts "------here-----"
+    puts params
+    @submissions = Submission.all
+    number_of_errors = 0
+    if params[:difficulty_level]&.to_i == 0
+      number_of_errors = 2
+    elsif params[:difficulty_level]&.to_i == -1
+      number_of_errors = 5
+    end
+
+    if params[:candidate_type].to_i == 0
+      @submissions = Submission.all.select { |s| s.shortlisted?(number_of_errors) }
+    end
+
+    if params[:candidate_type].to_i == -1
+      @submissions = Submission.all.reject { |s| s.shortlisted?(number_of_errors) }
+    end
+
+    render "show"
+  end
   # POST /users
   # POST /users.json
   def create
