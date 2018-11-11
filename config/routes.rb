@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   post "/send_message", to: "users#send_message"
   post "/select_candidates", to: "users#select_candidates"
   get "/select_candidates", to: "users#select_candidates"
+  post "/set_difficulty_level", to: "users#set_difficulty_level"
 end

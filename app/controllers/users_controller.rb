@@ -43,14 +43,12 @@ class UsersController < ApplicationController
   end
 
   def select_candidates
-    puts "------here-----"
-    puts params
     @submissions = Submission.all
-    number_of_errors = 0
+    number_of_errors = DifficultyLevel.find_by(name: "hard").number_of_errors || 0
     if params[:difficulty_level]&.to_i == 0
-      number_of_errors = 2
+      number_of_errors = DifficultyLevel.find_by(name: "medium").number_of_errors || 2
     elsif params[:difficulty_level]&.to_i == -1
-      number_of_errors = 5
+      number_of_errors = DifficultyLevel.find_by(name: "easy").number_of_errors || 5
     end
 
     if params[:candidate_type].to_i == 0
@@ -63,6 +61,21 @@ class UsersController < ApplicationController
 
     render "show"
   end
+
+  def set_difficulty_level
+    ["hard", "medium", "easy"].each do |d|
+      level = DifficultyLevel.find_by(name: d)
+      if level.nil?
+        DifficultyLevel.new(name: d, number_of_errors: params[d.to_sym]).save!
+      else
+        level.update(number_of_errors: params[d.to_sym])
+      end
+    end
+
+    flash[:success] = "Settings successfully saved"
+    redirect_to root_path
+  end
+
   # POST /users
   # POST /users.json
   def create

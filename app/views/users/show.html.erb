@@ -9,15 +9,11 @@
   <h3>Admin Dashboard</h3>
   <div class="row">
     <div class="col-md-6">
-      <%#<select id="candidates-select">
-        <option value="1">All candidates</option>
-        <option value="0">Successful candidates</option>
-        <option value="-1">Unsucessful candidates</option>
-      </select>%>
       <a href="#" data-toggle="modal" data-target="#select_candidates" class="btn btn-outline-dark btn-sm select-candidates">View Candidates</a>
       <span id="number-of-candidates"><%= pluralize(@submissions.size,"candidate") if @submissions %></span>
     </div>
     <div class="col-md-6">
+      <a href="#" data-toggle="modal" data-target="#difficulty_level" class="btn btn-outline-dark btn-sm">Set Difficulty Level</a>
       <%= link_to 'Logout', logout_path, class: "float-right admin-login" %>
       <a href="#" data-toggle="modal" data-target="#order" class="btn btn-outline-dark btn-sm float-right send-msg-btn">Send message</a>
     </div>
