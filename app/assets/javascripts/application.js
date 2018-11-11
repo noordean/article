@@ -18,8 +18,14 @@
 //= require popper
 //= require bootstrap
 
-$(document).on('turbolinks:load', function() {
-  $("#candidates-select").change(function(event) {
+window.setTimeout(function () {
+  $(".alert").fadeTo(2000, 0).slideUp(2000, function () {
+    $(this).remove();
+  });
+}, 2000);
+
+$(document).on('turbolinks:load', function () {
+  $("#candidates-select").change(function (event) {
     // var category_id = event.target.value;
     // $.ajax({
     //   url: "/submissions/category/" + category_id,
@@ -56,7 +62,7 @@ $(document).on('turbolinks:load', function() {
 
 
 
-  $('.photo_upload').on('change', function(e) {
+  $('.photo_upload').on('change', function (e) {
     readURL(this);
   });
 
@@ -65,8 +71,8 @@ $(document).on('turbolinks:load', function() {
     if (input.files && input.files[0]) {
       reader = new FileReader();
     }
-    reader.onload = function(e) {
-      if (Math.floor(input.files[0].size/1000) > 500) {
+    reader.onload = function (e) {
+      if (Math.floor(input.files[0].size / 1000) > 500) {
         var errorMsg = document.getElementById("passport-error-msg");
         $(".passport-error-msg").html("Your passport cannot be greater than 500kb");
         return;
