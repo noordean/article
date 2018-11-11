@@ -15,16 +15,25 @@
  */
 @import "bootstrap";
 
+input {
+  &:focus {
+    outline: none;
+  }
+}
+
+
 .company-name {
   .dagomo-title {
-      font-size: 22px;
-      color: #000;
-      &:visited {
-        color: #666;
-      }
-      &:hover {
-        color: #fff;
-        background-color: #000;
+    font-size: 22px;
+    color: #000;
+
+    &:visited {
+      color: #666;
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: #000;
     }
   }
 }

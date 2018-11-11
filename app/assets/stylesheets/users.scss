@@ -44,21 +44,54 @@
 
 }
 
-.admin-dashboard {
-  h3 {
-    text-align: center;
+*.main {
+  box-sizing: content-box !important;
+}
+
+.main {
+
+  .side-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #55455845;
+
+    .side-button {
+      max-height: 90vh;
+      margin: 50px 10px;
+
+    }
+
+    .btn {
+      width: 170px;
+      margin: 10px 0;
+    }
+
+    .logout {
+      margin: 30px auto;
+    }
   }
 
-  #number-of-candidates {
-    margin-left: 5px;
-  }
+  .main-side {
+    padding-top: 20px;
+    height: 100vh;
+    background-color: #ffffff45;
 
-  .table-container {
-    max-height: 70vh;
-    overflow-y: scroll;
-  }
+    .table-container {
+      max-height: 80vh;
+      overflow-y: scroll;
+    }
 
-  .send-msg-btn {
-    margin: 4px;
+    tbody {
+      tr {
+        &:hover {
+          background-color: #eb686845;
+        }
+      }
+    }
+
+    .main-side-title {
+      text-align: center;
+    }
   }
 }

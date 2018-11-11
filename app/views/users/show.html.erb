@@ -1,49 +1,58 @@
-<% provide(:title, "Admin Dashboard") %>
+<% provide(:title, "Admin Dashboardfff") %>
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>">
     <button class="close" data-dismiss="alert">×</button>
     <%= value %>
   </div>
 <% end %>
-<div class="admin-dashboard">
-  <h3>Admin Dashboard</h3>
+<div class="main">
   <div class="row">
-    <div class="col-md-6">
-      <a href="#" data-toggle="modal" data-target="#select_candidates" class="btn btn-outline-dark btn-sm select-candidates">Select Candidates</a>
-      <span id="number-of-candidates"><%= pluralize(@submissions.size,"candidate") if @submissions %></span>
+
+    <div class="side-bar col-md-2">
+      <div class="side-button">
+        <span id="number-of-candidates"><%= pluralize(@submissions.size,"candidate") if @submissions %></span>
+        <a href="#" data-toggle="modal" data-target="#select_candidates" class="btn btn-warning btn-sm select-candidates">Select Candidates</a>
+        <a href="#" data-toggle="modal" data-target="#difficulty_level" class="btn btn-warning btn-sm">Set Difficulty Level</a>
+        <a href="#" data-toggle="modal" data-target="#order" class="btn btn-warning btn-sm send-msg-btn">Send message</a>
+      </div>
+      <div class="logout">
+        <%= link_to 'Logout', logout_path, class: "admin-login btn btn-outline-dark" %>
+      </div>
     </div>
-    <div class="col-md-6">
-      <a href="#" data-toggle="modal" data-target="#difficulty_level" class="btn btn-outline-dark btn-sm">Set Difficulty Level</a>
-      <%= link_to 'Logout', logout_path, class: "float-right admin-login" %>
-      <a href="#" data-toggle="modal" data-target="#order" class="btn btn-outline-dark btn-sm float-right send-msg-btn">Send message</a>
+    <div class="main-side col-md-10">
+        <div class="main-side-title">
+          <h3>Admin Dashboard</h3>
+        </div>
+
+        <div class="table-container">
+          <table class="table">
+            <thead class="thead-light" id="submissions-head">
+              <tr>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">School</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Class</th>
+                <th scope="col">Phone no</th>
+                <th scope="col"># of errors</th>
+              </tr>
+            </thead>
+            <tbody id="submissions-body">
+            <% @submissions.each do |s| %>
+              <tr>
+                <td><%= s.first_name %></td>
+                <td><%= s.last_name %></td>
+                <td><%= s.school %></td>
+                <td><%= s.date_of_birth %></td>
+                <td><%= s.candidate_class.split("_").join(" ").upcase %></td>
+                <td><%= s.phone_number %></td>
+                <td><%= s.number_of_errors %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
     </div>
-  </div>
-  <div class="table-container">
-  <table class="table">
-    <thead class="thead-light" id="submissions-head">
-      <tr>
-        <th scope="col">First name</th>
-        <th scope="col">Last name</th>
-        <th scope="col">School</th>
-        <th scope="col">DOB</th>
-        <th scope="col">Class</th>
-        <th scope="col">Phone number</th>
-        <th scope="col"># of errors</th>
-      </tr>
-    </thead>
-    <tbody id="submissions-body">
-    <% @submissions.each do |s| %>
-      <tr>
-        <td><%= s.first_name %></td>
-        <td><%= s.last_name %></td>
-        <td><%= s.school %></td>
-        <td><%= s.date_of_birth %></td>
-        <td><%= s.candidate_class.split("_").join(" ").upcase %></td>
-        <td><%= s.phone_number %></td>
-        <td><%= s.number_of_errors %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
   </div>
 </div>
+

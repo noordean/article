@@ -1,18 +1,17 @@
-
-
 .content {
   .rows {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
+
   .register-left {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     text-align: center;
     color: #fff;
-    margin-top: 3%;
+    margin-top: 2%;
     width: 25%;
     margin-right: auto;
     margin-left: auto;
@@ -34,22 +33,36 @@
         }
       }
     }
+
     .img-logo {
       margin-top: 25%;
       margin-bottom: 5%;
-      -webkit-animation: mover 2s infinite  alternate;
-      animation: mover 1s infinite  alternate;
+      -webkit-animation: mover 2s infinite alternate;
+      animation: mover 1s infinite alternate;
     }
+
     @-webkit-keyframes mover {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-20px); }
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-20px);
+      }
     }
+
     @keyframes mover {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-20px); }
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-20px);
+      }
     }
 
   }
+
   .btnRegister {
     display: flex;
     justify-content: flex-end;
@@ -80,6 +93,12 @@
     margin-top: 25px;
     padding: 5% 2% 5% 5%;
     width: 65%;
+
+    .submit-button {
+      display: flex;
+      justify-content: flex-end;
+    }
+
     .article-field {
       resize: vertical;
       height: 200px;
@@ -88,6 +107,7 @@
     h4 {
       text-align: center;
       color: #383d41;
+      margin-top: -50px;
 
     }
 
@@ -97,14 +117,19 @@
       }
     }
 
-    .image_preview {
-      width: 100px;
-      height: 100px;
-      cursor: pointer;
-    }
+    .file-upload {
+      display: flex;
+      justify-content: center;
 
-    .photo_upload {
-      display: none;
+      .image_preview {
+        width: 70px;
+        height: 70px;
+        cursor: pointer;
+      }
+
+      .photo_upload {
+        display: none;
+      }
     }
 
     .passport-error-msg {
