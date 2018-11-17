@@ -13,8 +13,9 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require jquery
 //= require jquery3
+//= require_tree .
 //= require popper
 //= require bootstrap
 
@@ -70,7 +71,7 @@ $(document).on('turbolinks:load', function () {
   // }
 
 
-// Handles passport upload
+  // Handles passport upload
   $('.photo_upload').on('change', function (e) {
     readURL(this);
   });
@@ -98,25 +99,25 @@ $(document).on('turbolinks:load', function () {
     reader.readAsDataURL(input.files[0]);
   };
 
-// Handles article upload
-  $("#article-input").on("change", function(evt) {
+  // Handles article upload
+  $("#article-input").on("change", function (evt) {
     var files = evt.target.files;
     var f = files[0];
     var extension = f.name.split('.').pop().toLowerCase();
     var reader = new FileReader();
     var self = this;
-    reader.onload = (function(theFile) {
-        if (extension !== "txt") {
-          $(".article-file-error-msg").html("An invalid file detected.");
-          $(self).val("");
-          return;
-        }
-        $(".article-file-error-msg").html("");
-        return function(e) {
-          var formattedStr = e.target.result.replace(/(?:\r\n|\r|\n)/g, ' ')
-          $('#article-text-area').val( formattedStr );
-        };
-      })(f);
-      reader.readAsText(f);
+    reader.onload = (function (theFile) {
+      if (extension !== "txt") {
+        $(".article-file-error-msg").html("An invalid file detected.");
+        $(self).val("");
+        return;
+      }
+      $(".article-file-error-msg").html("");
+      return function (e) {
+        var formattedStr = e.target.result.replace(/(?:\r\n|\r|\n)/g, ' ')
+        $('#article-text-area').val(formattedStr);
+      };
+    })(f);
+    reader.readAsText(f);
   });
 });

@@ -16,9 +16,18 @@
 @import "bootstrap";
 
 input {
+
   &:focus {
-    outline: none;
+    border: 1px solid #5baf31 !important;
+    outline-offset: none !important;
+    outline: none !important;
   }
+}
+
+input.form-control:focus {
+  outline: none !important;
+  outline-offset: 0 !important;
+
 }
 
 
