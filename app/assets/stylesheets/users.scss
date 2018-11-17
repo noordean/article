@@ -85,11 +85,6 @@
         max-width: 800px;
       }
 
-      .modal-title {
-        text-align: center;
-        width: 100%;
-      }
-
       .modal-body {
         .article {
           font-family: "Times New Roman", Times, serif;
@@ -102,6 +97,10 @@
           }
         }
       }
+    }
+
+    table {
+      font-size: 13px;
     }
 
     tbody {
@@ -117,4 +116,9 @@
       text-align: center;
     }
   }
+}
+
+.modal-title {
+  text-align: center;
+  width: 100%;
 }

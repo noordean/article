@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Send message to successful candidates</h5>
+        <h6 class="modal-title">Send messages to successful candidates</h6>
       </div>
         <%= form_with(url: "/send_message", local: true) do %>
         <div class="modal-body">
@@ -15,14 +15,22 @@
               </select>
             </div>
             <div class="form-group">
-              <select name="broadcast_method" class="form-control" required="true">
+              <select name="broadcast_method" class="form-control" required="true" id="broadcast-method">
                 <option value="">--Broadcast Method--</option>
                 <option value="email">Email</option>
                 <option value="sms">SMS</option>
-            </select>
+              </select>
             </div>
             <div class="form-group">
               <textarea name="message" type="text" class="form-control address-input" placeholder="Write message" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" name="message_checkbox">
+                <label class="form-check-label" for="gridCheck" id="message-checkbox-label">
+                  Send to only candidates that have not recieved message
+                </label>
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-sm btn-outline-dark modal-close" data-dismiss="modal">Close</button>

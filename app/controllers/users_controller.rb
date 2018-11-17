@@ -25,7 +25,13 @@ class UsersController < ApplicationController
 
   def send_message
     number_of_errors = DifficultyLevel.find_by(name: params[:difficulty_level])&.number_of_errors || 0
-    successful_candidates = Submission.all.select { |s| s.shortlisted?(number_of_errors) }
+
+    successful_candidates = if params[:message_checkbox]
+      Submission.where("#{params[:broadcast_method]}_sent": "NO").select { |s| s.shortlisted?(number_of_errors) }
+    else
+      Submission.all.select { |s| s.shortlisted?(number_of_errors) }
+    end
+
     if (successful_candidates.size == 0)
       flash[:danger] = "Message not sent. No successful candidates detected."
       redirect_to root_path

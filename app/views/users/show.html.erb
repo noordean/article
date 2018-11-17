@@ -35,6 +35,8 @@
                 <th scope="col">Class</th>
                 <th scope="col">Phone no</th>
                 <th scope="col"># of errors</th>
+                <th scope="col">Email sent</th>
+                <th scope="col">SMS sent</th>
               </tr>
             </thead>
             <tbody id="submissions-body">
@@ -48,6 +50,8 @@
                 <td><%= s.candidate_class.split("_").join(" ").upcase %></td>
                 <td><%= s.phone_number %></td>
                 <td><%= s.number_of_errors %></td>
+                <td><%= s.email_sent %></td>
+                <td><%= s.sms_sent %></td>
               </tr>
             <% end %>
             </tbody>

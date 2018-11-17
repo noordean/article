@@ -41,6 +41,15 @@ $(document).on('turbolinks:load', function () {
     }
   });
 
+  $("#broadcast-method").change(function (event) {
+    if (event.target.value === "email") {
+      $("#message-checkbox-label").html("Send to only candidates that have not recieved email");
+    } else if (event.target.value === "sms") {
+      $("#message-checkbox-label").html("Send to only candidates that have not recieved SMS");
+    } else {
+      $("#message-checkbox-label").html("Send to only candidates that have not recieved message");
+    }
+  });
   // function renderSubmissionsBody(submissions) {
   //   var htmlStr = "";
   //   if (submissions.length === 0) {

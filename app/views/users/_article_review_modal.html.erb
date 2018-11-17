@@ -4,7 +4,6 @@
         <div class="modal-header">
           <p class="modal-title"><%= submission.first_name %> <%= submission.last_name %></p>
         </div>
-        <%= form_with(url: "/", local: true) do %>
         <div class="modal-body">
           <div class="candidate-passport text-right">
             <%= image_tag(url_for(submission.image), class: "pull-right img-responsive") if submission.image.attachment %>
@@ -19,7 +18,6 @@
             <% end %>
           </div>
         </div>
-        <% end %>
     </div>
   </div>
 </div>
