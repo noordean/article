@@ -66,21 +66,19 @@
   .register-btn {
     display: flex;
     justify-content: flex-end;
-    border: 1px solid #5baf31;
+    border: none;
     border-radius: 1.5rem;
     padding: 7px 40px;
     background: #5baf31;
+    border: 1px solid #5baf31;
     color: #fff;
-    font-weight: 600;
     cursor: pointer;
 
     &:hover {
       color: #5baf31;
       background: none;
       border: 1px solid #5baf31;
-      font-weight: normal;
-      transition: ease all 0.5s;
-      padding: 7px 40px;
+      transition: ease all 0.7s;
     }
   }
 
