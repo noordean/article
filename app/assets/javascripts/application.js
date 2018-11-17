@@ -99,26 +99,6 @@ $(document).on('turbolinks:load', function () {
   };
 
 // Handles article upload
-function handleFileSelect(evt) {
-    var files = evt.target.files;
-    var f = files[0];
-    var extension = f.name.split('.').pop().toLowerCase();
-    var reader = new FileReader();
-    var self = this;
-    reader.onload = (function(theFile) {
-        if (extension !== "txt") {
-          $(".article-file-error-msg").html("An invalid file detected.");
-          $(self).val("");
-          return;
-        }
-        $(".article-file-error-msg").html("");
-        return function(e) {
-          $('#article-text-area').val( e.target.result );
-        };
-      })(f);
-      reader.readAsText(f);
-  }
-
   $("#article-input").on("change", function(evt) {
     var files = evt.target.files;
     var f = files[0];
@@ -133,10 +113,10 @@ function handleFileSelect(evt) {
         }
         $(".article-file-error-msg").html("");
         return function(e) {
-          $('#article-text-area').val( e.target.result );
+          var formattedStr = e.target.result.replace(/(?:\r\n|\r|\n)/g, ' ')
+          $('#article-text-area').val( formattedStr );
         };
       })(f);
       reader.readAsText(f);
   });
-  // document.getElementById('article-input').addEventListener('change', handleFileSelect, false);
 });
