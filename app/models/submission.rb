@@ -1,12 +1,13 @@
 class Submission < ApplicationRecord
   has_one_attached :image
+  has_one_attached :article_file
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :candidate_class, presence: true
   validates :school, presence: true
   validates :email, uniqueness: true, format: { with: /\A[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/, message: "must be valid"}
   validates :phone_number, uniqueness: true, format: { with: /\A\d{11}\z/, message: 'must be valid'}
-  validates :article, presence: true
+  validate :check_article_presence
   validate :filter_article_words
   validate :check_image_presence
 
@@ -14,8 +15,8 @@ class Submission < ApplicationRecord
 
   def filter_article_words
     article_size = article.split.size
-    if (article_size < 50) || (article_size > 500)
-    # if (article_size < 2) || (article_size > 10)
+    # if (article_size < 50) || (article_size > 500)
+    if (article_size < 2) || (article_size > 20)
       errors.add(:base, "Article should contain between 50-500 words, but you submitted #{article_size} words.")
     end
   end
@@ -25,6 +26,12 @@ class Submission < ApplicationRecord
       errors.add(:base, "Your passport must be added")
     elsif (image.blob.byte_size/1000) > 500
       errors.add(:base, "Your passport can not be greater than 500kb")
+    end
+  end
+
+  def check_article_presence
+    unless article.present?
+      errors.add(:base, "Please select your article")
     end
   end
 

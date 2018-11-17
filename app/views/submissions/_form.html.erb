@@ -12,10 +12,10 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <%= form.text_field :first_name, class: "form-control", required: true, value: cookies[:first_name], placeholder: "First Name:" %>
+          <%= form.text_field :first_name, class: "form-control", required: true, value: cookies[:first_name], placeholder: "First Name" %>
         </div>
         <div class="form-group">
-          <%= form.text_field :last_name, class: "form-control", required: true, value: cookies[:last_name], placeholder: "Last Name:" %>
+          <%= form.text_field :last_name, class: "form-control", required: true, value: cookies[:last_name], placeholder: "Last Name" %>
         </div>
 
         <div class="form-group">
@@ -23,30 +23,35 @@
         </div>
 
         <div class="form-group">
-          <%= form.email_field :email, class: "form-control", required: true, value: cookies[:email], placeholder: "Email Address:" %>
+          <%= form.email_field :email, class: "form-control", required: true, value: cookies[:email], placeholder: "Email Address" %>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="form-group">
-          <%= form.text_field :middle_name, class: "form-control", value: cookies[:middle_name], placeholder: "Middle Name:" %>
+          <%= form.text_field :middle_name, class: "form-control", value: cookies[:middle_name], placeholder: "Middle Name" %>
         </div>
         <div class="form-group">
-          <%= form.date_field :date_of_birth, class: 'form-control', required: true, value: cookies[:date_of_birth], placeholder: "Date of Birth:" %>
+          <%= form.date_field :date_of_birth, class: 'form-control', required: true, value: cookies[:date_of_birth], placeholder: "Date of Birth" %>
         </div>
         <div class="form-group">
-          <%= form.text_field :school, class: "form-control", required: true, value: cookies[:school], placeholder: "School (Fullname and location):" %>
+          <%= form.text_field :school, class: "form-control", required: true, value: cookies[:school], placeholder: "School (Fullname and location)" %>
         </div>
         <div class="form-group">
-          <%= form.text_field :phone_number, class: "form-control", placeholder: "e.g: 07065437832:", required: true, value: cookies[:phone_number] %>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="form-group">
-          <%= form.text_area :article, class: "form-control article-field", placeholder: "Write your article here", required: true, value: cookies[:article] %>
+          <%= form.text_field :phone_number, class: "form-control", placeholder: "e.g: 07065437832", required: true, value: cookies[:phone_number] %>
         </div>
       </div>
 
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= form.text_area :article, class: "form-control article-field", placeholder: "Write your article here", id: "article-text-area" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div>Select article(Note: Only .txt files are allowed)<div class="article-file-error-msg"></div></div>
+        <%= form.file_field :article_file, id: "article-input" %>
+      </div>
     </div>
     <div class="submit-button">
       <button type="submit" class="btnRegister">Submit</button>

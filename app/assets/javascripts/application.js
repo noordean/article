@@ -61,7 +61,7 @@ $(document).on('turbolinks:load', function () {
   // }
 
 
-
+// Handles passport upload
   $('.photo_upload').on('change', function (e) {
     readURL(this);
   });
@@ -88,4 +88,27 @@ $(document).on('turbolinks:load', function () {
 
     reader.readAsDataURL(input.files[0]);
   };
+
+// Handles article upload
+function handleFileSelect(evt) {
+    var files = evt.target.files;
+    var f = files[0];
+    var extension = f.name.split('.').pop().toLowerCase();
+    var reader = new FileReader();
+    var self = this;
+    reader.onload = (function(theFile) {
+        if (extension !== "txt") {
+          $(".article-file-error-msg").html("An invalid file detected.");
+          $(self).val("");
+          return;
+        }
+        $(".article-file-error-msg").html("");
+        return function(e) {
+          $('#article-text-area').val( e.target.result );
+        };
+      })(f);
+      reader.readAsText(f);
+  }
+
+  document.getElementById('article-input').addEventListener('change', handleFileSelect, false);
 });
