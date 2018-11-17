@@ -1,0 +1,25 @@
+<div class="modal fade" id=<%= "article_review_#{submission.id}" %> tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title"><%= submission.first_name %> <%= submission.last_name %></p>
+        </div>
+        <%= form_with(url: "/", local: true) do %>
+        <div class="modal-body">
+          <div class="candidate-passport text-right">
+            <%= image_tag(url_for(submission.image), class: "pull-right img-responsive") if submission.image.attachment %>
+          </div>
+          <div class="article">
+            <%= submission.article %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-outline-dark modal-close" data-dismiss="modal">Close</button>
+            <% if submission.article_file.attachment %>
+              <%= link_to "Download", rails_blob_path(submission.article_file, disposition: 'attachment'), class: "btn btn-sm btn-outline-primary modal-submit" %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -80,6 +80,28 @@
     .table-container {
       max-height: 80vh;
       overflow-y: scroll;
+
+      .modal-dialog {
+        max-width: 800px;
+      }
+
+      .modal-title {
+        text-align: center;
+        width: 100%;
+      }
+
+      .modal-body {
+        .article {
+          font-family: "Times New Roman", Times, serif;
+        }
+
+        .candidate-passport {
+          img {
+            width: 100px;
+            height: 100px;
+          }
+        }
+      }
     }
 
     tbody {
@@ -87,6 +109,7 @@
         &:hover {
           background-color: #eb686845;
         }
+      cursor: pointer;
       }
     }
 

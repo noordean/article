@@ -39,7 +39,8 @@
             </thead>
             <tbody id="submissions-body">
             <% @submissions.each do |s| %>
-              <tr>
+              <%= render "users/article_review_modal.html", submission: s %>
+              <tr data-toggle="modal" data-target=<%= "#article_review_#{s.id}" %>>
                 <td><%= s.first_name %></td>
                 <td><%= s.last_name %></td>
                 <td><%= s.school %></td>
