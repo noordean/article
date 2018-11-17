@@ -106,7 +106,6 @@ MIT license info: https://github.com/jmosbech/StickyTableHeaders/blob/master/lic
     };
 
     base.bind = function () {
-      console.log(base.isWindowScrolling, 'seun')
       base.$scrollableArea.on('scroll.' + name, base.toggleHeaders);
       if (!base.isWindowScrolling) {
         base.$window.on('scroll.' + name + base.id, base.setPositionValues);
