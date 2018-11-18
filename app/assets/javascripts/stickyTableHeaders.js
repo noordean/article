@@ -1,5 +1,8 @@
 $(function () {
-  $("table").stickyTableHeaders();
+  $("table").stickyTableHeaders({
+    scrollableArea: $(".table-container")[0],
+    "fixedOffset": 2
+  });
 });
 
 /*! Copyright (c) 2011 by Jonas Mosbech - https://github.com/jmosbech/StickyTableHeaders
@@ -166,7 +169,7 @@ MIT license info: https://github.com/jmosbech/StickyTableHeaders/blob/master/lic
             newLeft = offset.left - scrollLeft + base.options.leftOffset;
             base.$originalHeader.css({
               'position': 'fixed',
-              'margin-top': base.options.marginTop + 62,
+              'margin-top': base.options.marginTop - 1,
               'left': newLeft,
               'z-index': 3 // #18: opacity bug
             });
